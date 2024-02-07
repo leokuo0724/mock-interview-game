@@ -1,7 +1,7 @@
 {
-  "name": "solidjs-phaser",
+  "name": "mock-interview-game",
   "version": "0.0.0",
-  "description": "Simple example of using Phaser with SolidJS",
+  "description": "",
   "scripts": {
     "start": "vite",
     "dev": "vite",
