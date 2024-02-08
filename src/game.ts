@@ -3,10 +3,10 @@ import { Main } from "./scenes/main";
 
 const config = {
   type: Phaser.AUTO,
-  width: 1920,
-  height: 1080,
+  width: 1280,
+  height: 720,
   parent: "game",
-  backgroundColor: "#333333",
+  backgroundColor: "#ffffff",
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
