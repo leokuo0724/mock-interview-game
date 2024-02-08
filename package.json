@@ -10,17 +10,20 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
     "solid-devtools": "^0.29.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.11",
-    "vite-plugin-solid": "^2.8.2",
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35"
+    "vite-plugin-solid": "^2.8.2"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
     "openai": "^4.26.1",
     "phaser": "^3.70.0",
     "solid-js": "^1.8.11",
-    "tailwindcss": "^3.4.1"
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

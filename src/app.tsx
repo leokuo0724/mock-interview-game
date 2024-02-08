@@ -18,5 +18,9 @@ export const App: Component = () => {
     if (resizeCounter() > 0) resizeApp();
   });
 
-  return <div class="absolute" ref={ref}></div>;
+  return (
+    <div class="absolute" ref={ref}>
+      Hello world
+    </div>
+  );
 };
