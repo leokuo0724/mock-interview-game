@@ -1,4 +1,5 @@
 import { createEffect, type Component } from "solid-js";
+import { Home } from "./components/home";
 import { resizeCounter } from "./states/screen";
 
 export const App: Component = () => {
@@ -20,7 +21,7 @@ export const App: Component = () => {
 
   return (
     <div class="absolute" ref={ref}>
-      Hello world
+      <Home />
     </div>
   );
 };
