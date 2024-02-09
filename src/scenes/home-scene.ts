@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { SCENE_KEYS } from "../constants/phaser";
 import { setResizeCounter } from "../states/screen";
 
 const TEXT_STYLE = {
@@ -8,9 +9,9 @@ const TEXT_STYLE = {
   align: "center",
 };
 
-export class Main extends Scene {
+export class HomeScene extends Scene {
   constructor() {
-    super("Game");
+    super(SCENE_KEYS.HOME);
   }
 
   create() {

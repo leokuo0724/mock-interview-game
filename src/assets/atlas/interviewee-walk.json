@@ -1,0 +1,881 @@
+{
+	"textures": [
+		{
+			"image": "interviewee-walk.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 991,
+				"h": 1024
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "interviewee-walk_020.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 22,
+						"w": 124,
+						"h": 258
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 124,
+						"h": 258
+					}
+				},
+				{
+					"filename": "interviewee-walk_019.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 23,
+						"w": 124,
+						"h": 257
+					},
+					"frame": {
+						"x": 1,
+						"y": 261,
+						"w": 124,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_021.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 22,
+						"w": 123,
+						"h": 258
+					},
+					"frame": {
+						"x": 1,
+						"y": 520,
+						"w": 123,
+						"h": 258
+					}
+				},
+				{
+					"filename": "interviewee-walk_022.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 23,
+						"w": 123,
+						"h": 257
+					},
+					"frame": {
+						"x": 126,
+						"y": 520,
+						"w": 123,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_018.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 24,
+						"w": 123,
+						"h": 256
+					},
+					"frame": {
+						"x": 127,
+						"y": 1,
+						"w": 123,
+						"h": 256
+					}
+				},
+				{
+					"filename": "interviewee-walk_016.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 25,
+						"w": 123,
+						"h": 255
+					},
+					"frame": {
+						"x": 127,
+						"y": 259,
+						"w": 123,
+						"h": 255
+					}
+				},
+				{
+					"filename": "interviewee-walk_017.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 25,
+						"w": 123,
+						"h": 255
+					},
+					"frame": {
+						"x": 251,
+						"y": 516,
+						"w": 123,
+						"h": 255
+					}
+				},
+				{
+					"filename": "interviewee-walk_010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 30,
+						"w": 54,
+						"h": 250
+					},
+					"frame": {
+						"x": 251,
+						"y": 773,
+						"w": 54,
+						"h": 250
+					}
+				},
+				{
+					"filename": "interviewee-walk_030.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 30,
+						"w": 54,
+						"h": 250
+					},
+					"frame": {
+						"x": 307,
+						"y": 773,
+						"w": 54,
+						"h": 250
+					}
+				},
+				{
+					"filename": "interviewee-walk_023.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 24,
+						"w": 119,
+						"h": 256
+					},
+					"frame": {
+						"x": 252,
+						"y": 1,
+						"w": 119,
+						"h": 256
+					}
+				},
+				{
+					"filename": "interviewee-walk_015.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 26,
+						"w": 119,
+						"h": 254
+					},
+					"frame": {
+						"x": 252,
+						"y": 259,
+						"w": 119,
+						"h": 254
+					}
+				},
+				{
+					"filename": "interviewee-walk_024.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 25,
+						"w": 111,
+						"h": 255
+					},
+					"frame": {
+						"x": 373,
+						"y": 1,
+						"w": 111,
+						"h": 255
+					}
+				},
+				{
+					"filename": "interviewee-walk_014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 27,
+						"w": 111,
+						"h": 253
+					},
+					"frame": {
+						"x": 373,
+						"y": 258,
+						"w": 111,
+						"h": 253
+					}
+				},
+				{
+					"filename": "interviewee-walk_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 23,
+						"w": 110,
+						"h": 257
+					},
+					"frame": {
+						"x": 376,
+						"y": 513,
+						"w": 110,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_038.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 23,
+						"w": 110,
+						"h": 257
+					},
+					"frame": {
+						"x": 376,
+						"y": 513,
+						"w": 110,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_039.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 23,
+						"w": 110,
+						"h": 257
+					},
+					"frame": {
+						"x": 376,
+						"y": 513,
+						"w": 110,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_040.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 23,
+						"w": 110,
+						"h": 257
+					},
+					"frame": {
+						"x": 376,
+						"y": 513,
+						"w": 110,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 29,
+						"w": 81,
+						"h": 251
+					},
+					"frame": {
+						"x": 376,
+						"y": 772,
+						"w": 81,
+						"h": 251
+					}
+				},
+				{
+					"filename": "interviewee-walk_028.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 29,
+						"w": 66,
+						"h": 251
+					},
+					"frame": {
+						"x": 459,
+						"y": 772,
+						"w": 66,
+						"h": 251
+					}
+				},
+				{
+					"filename": "interviewee-walk_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 23,
+						"w": 109,
+						"h": 257
+					},
+					"frame": {
+						"x": 486,
+						"y": 1,
+						"w": 109,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_031.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 29,
+						"w": 66,
+						"h": 251
+					},
+					"frame": {
+						"x": 486,
+						"y": 260,
+						"w": 66,
+						"h": 251
+					}
+				},
+				{
+					"filename": "interviewee-walk_037.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 23,
+						"w": 109,
+						"h": 257
+					},
+					"frame": {
+						"x": 488,
+						"y": 513,
+						"w": 109,
+						"h": 257
+					}
+				},
+				{
+					"filename": "interviewee-walk_011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 29,
+						"w": 65,
+						"h": 251
+					},
+					"frame": {
+						"x": 554,
+						"y": 260,
+						"w": 65,
+						"h": 251
+					}
+				},
+				{
+					"filename": "interviewee-walk_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 24,
+						"w": 106,
+						"h": 256
+					},
+					"frame": {
+						"x": 597,
+						"y": 1,
+						"w": 106,
+						"h": 256
+					}
+				},
+				{
+					"filename": "interviewee-walk_029.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 29,
+						"w": 56,
+						"h": 251
+					},
+					"frame": {
+						"x": 527,
+						"y": 772,
+						"w": 56,
+						"h": 251
+					}
+				},
+				{
+					"filename": "interviewee-walk_008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 29,
+						"w": 54,
+						"h": 251
+					},
+					"frame": {
+						"x": 585,
+						"y": 772,
+						"w": 54,
+						"h": 251
+					}
+				},
+				{
+					"filename": "interviewee-walk_036.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 24,
+						"w": 105,
+						"h": 256
+					},
+					"frame": {
+						"x": 599,
+						"y": 513,
+						"w": 105,
+						"h": 256
+					}
+				},
+				{
+					"filename": "interviewee-walk_013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 28,
+						"w": 97,
+						"h": 252
+					},
+					"frame": {
+						"x": 641,
+						"y": 771,
+						"w": 97,
+						"h": 252
+					}
+				},
+				{
+					"filename": "interviewee-walk_027.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 28,
+						"w": 78,
+						"h": 252
+					},
+					"frame": {
+						"x": 621,
+						"y": 259,
+						"w": 78,
+						"h": 252
+					}
+				},
+				{
+					"filename": "interviewee-walk_032.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 28,
+						"w": 77,
+						"h": 252
+					},
+					"frame": {
+						"x": 701,
+						"y": 259,
+						"w": 77,
+						"h": 252
+					}
+				},
+				{
+					"filename": "interviewee-walk_025.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 26,
+						"w": 101,
+						"h": 254
+					},
+					"frame": {
+						"x": 706,
+						"y": 513,
+						"w": 101,
+						"h": 254
+					}
+				},
+				{
+					"filename": "interviewee-walk_034.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 26,
+						"w": 93,
+						"h": 254
+					},
+					"frame": {
+						"x": 740,
+						"y": 769,
+						"w": 93,
+						"h": 254
+					}
+				},
+				{
+					"filename": "interviewee-walk_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 24,
+						"w": 100,
+						"h": 256
+					},
+					"frame": {
+						"x": 705,
+						"y": 1,
+						"w": 100,
+						"h": 256
+					}
+				},
+				{
+					"filename": "interviewee-walk_007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 28,
+						"w": 58,
+						"h": 252
+					},
+					"frame": {
+						"x": 780,
+						"y": 259,
+						"w": 58,
+						"h": 252
+					}
+				},
+				{
+					"filename": "interviewee-walk_035.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 25,
+						"w": 100,
+						"h": 255
+					},
+					"frame": {
+						"x": 807,
+						"y": 1,
+						"w": 100,
+						"h": 255
+					}
+				},
+				{
+					"filename": "interviewee-walk_026.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 27,
+						"w": 90,
+						"h": 253
+					},
+					"frame": {
+						"x": 809,
+						"y": 513,
+						"w": 90,
+						"h": 253
+					}
+				},
+				{
+					"filename": "interviewee-walk_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 25,
+						"w": 92,
+						"h": 255
+					},
+					"frame": {
+						"x": 835,
+						"y": 768,
+						"w": 92,
+						"h": 255
+					}
+				},
+				{
+					"filename": "interviewee-walk_033.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 27,
+						"w": 85,
+						"h": 253
+					},
+					"frame": {
+						"x": 840,
+						"y": 258,
+						"w": 85,
+						"h": 253
+					}
+				},
+				{
+					"filename": "interviewee-walk_005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 26,
+						"w": 81,
+						"h": 254
+					},
+					"frame": {
+						"x": 909,
+						"y": 1,
+						"w": 81,
+						"h": 254
+					}
+				},
+				{
+					"filename": "interviewee-walk_006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 27,
+						"w": 69,
+						"h": 253
+					},
+					"frame": {
+						"x": 901,
+						"y": 513,
+						"w": 69,
+						"h": 253
+					}
+				},
+				{
+					"filename": "interviewee-walk_009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 29,
+						"w": 52,
+						"h": 251
+					},
+					"frame": {
+						"x": 929,
+						"y": 768,
+						"w": 52,
+						"h": 251
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:85e1bbba63e1d1bd45e450b5d4005ea4:6092dc923c6475a7c8fb1f7d733e3abb:673450c9d02b3ce19271ee987d769276$"
+	}
+}

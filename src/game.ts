@@ -1,5 +1,6 @@
 import Phaser from "phaser";
-import { Main } from "./scenes/main";
+import { HomeScene } from "./scenes/home-scene";
+import { PreloadScene } from "./scenes/preload-scene";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -14,7 +15,7 @@ const config: Phaser.Types.Core.GameConfig = {
       width: 576,
     },
   },
-  scene: [Main],
+  scene: [PreloadScene, HomeScene],
 };
 
 export default new Phaser.Game(config);
