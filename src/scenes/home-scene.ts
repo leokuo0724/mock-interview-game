@@ -31,7 +31,8 @@ export class HomeScene extends CustomScene {
     );
 
     const ground = this.add.image(0, 0, TEXTURE_KEYS.GROUND);
-    const intervieweeBottomCenter = interviewee.getBottomCenter();
-    ground.setPosition(intervieweeBottomCenter.x, intervieweeBottomCenter.y);
+    ground.setOrigin(0, 0);
+    const intervieweeBottomLeft = interviewee.getBottomLeft();
+    ground.setPosition(intervieweeBottomLeft.x! - 35, intervieweeBottomLeft.y);
   }
 }

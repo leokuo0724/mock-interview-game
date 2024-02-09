@@ -20,10 +20,9 @@ export const App: Component = () => {
     if (resizeCounter() > 0) resizeApp();
   });
 
-  const state = gameState();
   return (
     <div class="absolute" ref={ref}>
-      {state === GameState.HOME && <Home />}
+      {gameState() === GameState.HOME && <Home />}
     </div>
   );
 };
