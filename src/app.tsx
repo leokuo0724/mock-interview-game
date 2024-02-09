@@ -1,5 +1,6 @@
 import { createEffect, type Component } from "solid-js";
 import { Home } from "./components/home";
+import { PreSettings } from "./components/pre-settings";
 import { GameState, gameState } from "./states/game-state";
 import { resizeCounter } from "./states/screen";
 
@@ -23,6 +24,7 @@ export const App: Component = () => {
   return (
     <div class="absolute" ref={ref}>
       {gameState() === GameState.HOME && <Home />}
+      {gameState() === GameState.PRE_SETTINGS && <PreSettings />}
     </div>
   );
 };
