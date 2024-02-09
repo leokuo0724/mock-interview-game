@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import { Interviewee } from "../classes/interviewee";
 import { SCENE_KEYS } from "../constants/phaser";
 import { setResizeCounter } from "../states/screen";
 
@@ -19,12 +20,18 @@ export class HomeScene extends Scene {
       .text(
         this.cameras.main.width / 2,
         this.cameras.main.height / 2,
-        `Hello World`,
+        `MOCK\n INTERVIEW\n GAME`,
         TEXT_STYLE
       )
       .setOrigin(0.5);
 
     this.scale.on("resize", this.resize, this);
+
+    const interviewee = new Interviewee(this);
+    interviewee.setPosition(
+      this.cameras.main.width / 2,
+      this.cameras.main.height / 2
+    );
   }
 
   resize() {

@@ -5,7 +5,9 @@ export const Home: Component = () => {
   return (
     <>
       <div class="flex w-full h-full justify-center relative">
-        <h1 class="absolute font-bold text-2xl top-[36px]">MOCK INTERVIEW</h1>
+        <span class="absolute font-medium top-[36px] text-muted-foreground text-sm">
+          Mock Interview Game | Leo Kuo
+        </span>
         {/* @ts-ignore */}
         <APIKeyDialog class="absolute bottom-[48px]" />
       </div>
