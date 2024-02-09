@@ -1,5 +1,6 @@
 import { createEffect, type Component } from "solid-js";
 import { Home } from "./components/home";
+import { GameState, gameState } from "./states/game-state";
 import { resizeCounter } from "./states/screen";
 
 export const App: Component = () => {
@@ -19,9 +20,10 @@ export const App: Component = () => {
     if (resizeCounter() > 0) resizeApp();
   });
 
+  const state = gameState();
   return (
     <div class="absolute" ref={ref}>
-      <Home />
+      {state === GameState.HOME && <Home />}
     </div>
   );
 };

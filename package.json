@@ -23,6 +23,7 @@
     "clsx": "^2.1.0",
     "openai": "^4.26.1",
     "phaser": "^3.70.0",
+    "solid-icons": "^1.1.0",
     "solid-js": "^1.8.11",
     "tailwind-merge": "^2.2.1",
     "tailwindcss": "^3.4.1",
