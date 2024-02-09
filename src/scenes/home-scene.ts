@@ -1,7 +1,6 @@
-import { Scene } from "phaser";
 import { Interviewee } from "../classes/interviewee";
 import { SCENE_KEYS } from "../constants/phaser";
-import { setResizeCounter } from "../states/screen";
+import { CustomScene } from "./custom-scene";
 
 const TEXT_STYLE = {
   fontFamily: "Arial Black",
@@ -10,7 +9,7 @@ const TEXT_STYLE = {
   align: "center",
 };
 
-export class HomeScene extends Scene {
+export class HomeScene extends CustomScene {
   constructor() {
     super(SCENE_KEYS.HOME);
   }
@@ -25,17 +24,10 @@ export class HomeScene extends Scene {
       )
       .setOrigin(0.5);
 
-    this.scale.on("resize", this.resize, this);
-
     const interviewee = new Interviewee(this);
     interviewee.setPosition(
       this.cameras.main.width / 2,
       this.cameras.main.height / 2
     );
-  }
-
-  resize() {
-    // Modify value to resize DOM elements
-    setResizeCounter((prev) => prev + 1);
   }
 }

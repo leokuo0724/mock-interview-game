@@ -1,11 +1,11 @@
-import { Scene } from "phaser";
 import { ATLAS_KEYS, SCENE_KEYS } from "../constants/phaser";
 
 import intervieweeWalkJson from "../assets/atlas/interviewee-walk.json";
 import intervieweeWalkPng from "../assets/atlas/interviewee-walk.png";
 import { GameState, setGameState } from "../states/game-state";
+import { CustomScene } from "./custom-scene";
 
-export class PreloadScene extends Scene {
+export class PreloadScene extends CustomScene {
   constructor() {
     super("Preload");
   }
