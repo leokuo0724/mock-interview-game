@@ -4,6 +4,7 @@ import intervieweeWalkJson from "../assets/atlas/interviewee-walk.json";
 import intervieweeWalkPng from "../assets/atlas/interviewee-walk.png";
 import { GameState, setGameState } from "../states/game-state";
 import { CustomScene } from "./custom-scene";
+import { drawGroundLine } from "./utils";
 
 export class PreloadScene extends CustomScene {
   constructor() {
@@ -24,5 +25,8 @@ export class PreloadScene extends CustomScene {
       intervieweeWalkPng,
       intervieweeWalkJson
     );
+
+    const graphics = new Phaser.GameObjects.Graphics(this);
+    drawGroundLine(graphics);
   }
 }

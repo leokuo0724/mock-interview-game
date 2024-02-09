@@ -1,5 +1,5 @@
 import { Interviewee } from "../classes/interviewee";
-import { SCENE_KEYS } from "../constants/phaser";
+import { SCENE_KEYS, TEXTURE_KEYS } from "../constants/phaser";
 import { CustomScene } from "./custom-scene";
 
 const TEXT_STYLE = {
@@ -29,5 +29,9 @@ export class HomeScene extends CustomScene {
       this.cameras.main.width / 2,
       this.cameras.main.height / 2
     );
+
+    const ground = this.add.image(0, 0, TEXTURE_KEYS.GROUND);
+    const intervieweeBottomCenter = interviewee.getBottomCenter();
+    ground.setPosition(intervieweeBottomCenter.x, intervieweeBottomCenter.y);
   }
 }
