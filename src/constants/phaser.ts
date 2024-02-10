@@ -5,6 +5,7 @@ export const SCENE_KEYS = {
 
 export const ATLAS_KEYS = {
   INTERVIEWEE_WALK: "interviewee-walk",
+  INTERVIEWEE_OPEN_DOOR: "interviewee-open-door",
 };
 
 export const TEXTURE_KEYS = {
