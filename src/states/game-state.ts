@@ -5,6 +5,7 @@ export enum GameState {
   HOME,
   START_TRANSITION,
   PRE_SETTINGS,
+  GAME_TRANSITION,
 }
 
 export const [gameState, setGameState] = createSignal(GameState.PRELOAD);

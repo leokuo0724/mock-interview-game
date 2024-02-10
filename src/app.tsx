@@ -24,7 +24,8 @@ export const App: Component = () => {
   return (
     <div class="absolute overflow-auto" ref={ref}>
       {gameState() === GameState.HOME && <Home />}
-      {gameState() === GameState.PRE_SETTINGS && <PreSettings />}
+      {(gameState() === GameState.PRE_SETTINGS ||
+        gameState() === GameState.GAME_TRANSITION) && <PreSettings />}
     </div>
   );
 };
