@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { Message, messages, setMessages } from "../states/messages";
 
 class AIService {
   public openai: OpenAI | null = null;
@@ -10,13 +11,17 @@ class AIService {
     });
   }
 
-  public chat(content: string) {
+  public async chat() {
     if (!this.openai) throw new Error("OpenAI not initialized");
 
-    return this.openai.chat.completions.create({
-      messages: [{ role: "user", content }],
+    const res = await this.openai.chat.completions.create({
+      messages,
       model: "gpt-3.5-turbo",
+      max_tokens: 256,
     });
+    const message = res.choices[0]?.message as Message;
+    if (!message) return;
+    setMessages((prev) => [message, ...prev]);
   }
 }
 

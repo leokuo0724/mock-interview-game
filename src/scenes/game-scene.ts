@@ -67,7 +67,7 @@ export class GameScene extends CustomScene {
           duration: 1000,
           ease: Phaser.Math.Easing.Cubic.Out,
           completeDelay: 300,
-          onComplete: () => {
+          onComplete: async () => {
             setGameState(GameState.INTERVIEWING);
           },
         });

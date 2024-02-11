@@ -1,4 +1,5 @@
 import { Component, createSignal } from "solid-js";
+import { aiService } from "../../services/open-ai";
 import { GameState, setGameState } from "../../states/game-state";
 import { Button } from "../ui/button";
 import {
@@ -37,6 +38,9 @@ export const APIKeyDialog: Component = (props) => {
               "api-key"
             ).value;
             // TODO: init openai service
+            if (import.meta.env.DEV) {
+              aiService.init(import.meta.env.VITE_OPENAI_API_KEY);
+            }
 
             setOpen(false);
             setGameState(GameState.START_TRANSITION);

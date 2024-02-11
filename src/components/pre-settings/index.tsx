@@ -2,6 +2,8 @@ import { As } from "@kobalte/core";
 import { JSX, Show, createSignal } from "solid-js";
 import { Motion, Presence } from "solid-motionone";
 import { GameState, setGameState } from "../../states/game-state";
+import { setInterviewConfig } from "../../states/interview-config";
+import { setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -15,6 +17,7 @@ import {
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const [isShowForm, setShowForm] = createSignal(true);
+
 export const PreSettings = () => {
   return (
     <div class="flex h-full">
@@ -40,6 +43,10 @@ export const PreSettings = () => {
 };
 
 const PreSettingsForm = () => {
+  const [gender, setGender] = createSignal("Male");
+  const [position, setPosition] = createSignal("Frontend Engineer");
+  const [level, setLevel] = createSignal("Junior");
+
   const handleSubmit: JSX.EventHandlerUnion<
     HTMLFormElement,
     Event & {
@@ -47,6 +54,23 @@ const PreSettingsForm = () => {
     }
   > = (event) => {
     event.preventDefault();
+    const elements = (event.target as any).elements;
+    const name = elements.namedItem("name").value;
+    const extraInfo = elements.namedItem("extra-info").value;
+
+    setInterviewConfig({
+      name,
+      gender: gender(),
+      position: position(),
+      level: level(),
+      extraInfo,
+    });
+    setMessages([
+      {
+        role: "system",
+        content: `Your are a tech lead from a company(${extraInfo}). And user is a ${level} ${position} candidate. Start with greeting and then ask a question to interview the user.`,
+      },
+    ]);
     setShowForm(false);
     setGameState(GameState.GAME_TRANSITION);
   };
@@ -70,12 +94,13 @@ const PreSettingsForm = () => {
           <Input name="name" placeholder="Your name" maxLength={20} required />
         </div>
         <div class="flex flex-col gap-2">
-          <Label for="name">
+          <Label for="gender">
             Your Gender <span class="text-red-900">*</span>
           </Label>
           <Select
             name="gender"
-            defaultValue={"Male"}
+            value={gender()}
+            onChange={setGender}
             options={["Male", "Female"]}
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
@@ -100,12 +125,13 @@ const PreSettingsForm = () => {
           </Select>
         </div>
         <div class="flex flex-col gap-2">
-          <Label for="name">
+          <Label for="position">
             Position <span class="text-red-900">*</span>
           </Label>
           <Select
             name="position"
-            defaultValue={"Frontend Engineer"}
+            value={position()}
+            onChange={setPosition}
             options={[
               "Frontend Engineer",
               "Backend Engineer",
@@ -125,12 +151,13 @@ const PreSettingsForm = () => {
           </Select>
         </div>
         <div class="flex flex-col gap-2">
-          <Label for="name">
+          <Label for="level">
             Level <span class="text-red-900">*</span>
           </Label>
           <Select
-            name="position"
-            defaultValue={"Junior"}
+            name="level"
+            value={level()}
+            onChange={setLevel}
             options={["Junior", "Mid", "Senior", "Staff", "Principal"]}
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
@@ -146,8 +173,9 @@ const PreSettingsForm = () => {
           </Select>
         </div>
         <div class="flex flex-col gap-2 col-span-1 md:col-span-2">
-          <Label for="name">What kind of company?</Label>
+          <Label for="extra-info">What kind of company?</Label>
           <Input
+            name="extra-info"
             placeholder="Describe more about the company"
             maxLength={100}
           />
