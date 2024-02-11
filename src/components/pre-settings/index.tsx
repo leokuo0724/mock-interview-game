@@ -68,7 +68,7 @@ const PreSettingsForm = () => {
     setMessages([
       {
         role: "system",
-        content: `Your are a tech lead from a company(${extraInfo}). And user is a ${level()} ${position()} candidate. Start with greeting and then ask a question to interview the user.`,
+        content: `Your are a tech lead from a company(${extraInfo}). And user is a ${level()} ${position()} candidate. Start with greeting and then ask a question to interview the user. (Without response with character role)`,
       },
     ]);
     setShowForm(false);
