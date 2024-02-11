@@ -10,7 +10,7 @@ export class IntervieweeSit extends CustomSprite {
       key: "idle",
       frames: this._generateFramesFromAtlas("interviewee-sit-idle_", 0, 9),
       repeat: -1,
-      frameRate: 12,
+      frameRate: 15,
       yoyo: true,
       repeatDelay: 300,
     });

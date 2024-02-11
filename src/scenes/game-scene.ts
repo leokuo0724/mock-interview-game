@@ -2,6 +2,7 @@ import { Desk } from "../classes/desk";
 import { IntervieweeSit } from "../classes/interviewee-sit";
 import { InterviewerSit } from "../classes/interviewer-sit";
 import { SCENE_KEYS } from "../constants/phaser";
+import { GameState, setGameState } from "../states/game-state";
 import { CustomScene } from "./custom-scene";
 
 export class GameScene extends CustomScene {
@@ -15,6 +16,8 @@ export class GameScene extends CustomScene {
   }
 
   create() {
+    this.cameras.main.setZoom(0.8);
+
     const intervieweeX = this.cameras.main.width / 2 - 120;
     this.intervieweeSit = new IntervieweeSit(this).setAlpha(0);
     this.intervieweeSit.setPosition(
@@ -43,17 +46,9 @@ export class GameScene extends CustomScene {
       ease: Phaser.Math.Easing.Bounce.Out,
       duration: 1000,
       onComplete: () => {
+        this.cameras.main.zoomTo(1, 1000);
         this.desk.setAlpha(1);
         this.desk.drop();
-
-        this.tweens.add({
-          targets: this.intervieweeSit,
-          alpha: 1,
-          x: intervieweeX,
-          delay: 300,
-          duration: 1000,
-          ease: Phaser.Math.Easing.Cubic.Out,
-        });
 
         this.tweens.add({
           targets: this.interviewerSit,
@@ -62,6 +57,19 @@ export class GameScene extends CustomScene {
           delay: 300,
           duration: 1000,
           ease: Phaser.Math.Easing.Cubic.Out,
+        });
+
+        this.tweens.add({
+          targets: this.intervieweeSit,
+          alpha: 1,
+          x: intervieweeX,
+          delay: 300,
+          duration: 1000,
+          ease: Phaser.Math.Easing.Cubic.Out,
+          completeDelay: 300,
+          onComplete: () => {
+            setGameState(GameState.INTERVIEWING);
+          },
         });
       },
     });
