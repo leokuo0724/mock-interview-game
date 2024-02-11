@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+import { GameScene } from "./scenes/game-scene";
 import { HomeScene } from "./scenes/home-scene";
 import { PreloadScene } from "./scenes/preload-scene";
 
@@ -15,7 +16,7 @@ const config: Phaser.Types.Core.GameConfig = {
       width: 576,
     },
   },
-  scene: [PreloadScene, HomeScene],
+  scene: [PreloadScene, HomeScene, GameScene],
 };
 
 export default new Phaser.Game(config);

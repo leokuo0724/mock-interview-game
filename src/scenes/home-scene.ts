@@ -60,7 +60,9 @@ export class HomeScene extends CustomScene {
       alpha: 0,
       duration: 1200,
       delay: 500,
-      onComplete: () => {},
+      onComplete: () => {
+        this.scene.start(SCENE_KEYS.GAME);
+      },
     });
   }
 

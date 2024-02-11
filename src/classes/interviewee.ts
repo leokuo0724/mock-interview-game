@@ -23,7 +23,7 @@ export class Interviewee extends CustomSprite {
     this.setTexture(ATLAS_KEYS.INTERVIEWEE_OPEN_DOOR);
     this.anims.create({
       key: "open-door",
-      frames: this._generateFramesFromAtlas("interviewee-open-door_", 0, 28),
+      frames: this._generateFramesFromAtlas("interviewee-open-door_", 0, 29),
       repeat: 0,
       frameRate: 30,
     });

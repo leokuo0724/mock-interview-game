@@ -1,0 +1,482 @@
+{
+	"textures": [
+		{
+			"image": "interviewer-sit.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1331,
+				"h": 454
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "interviewer-sit-idle_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 1,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 122,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 122,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 243,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 243,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 364,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 364,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 485,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 485,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-idle_010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 606,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 606,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 727,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 727,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 848,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 848,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 969,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 969,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 1090,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 1090,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 1211,
+						"y": 1,
+						"w": 119,
+						"h": 225
+					}
+				},
+				{
+					"filename": "interviewer-sit-talk_010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 230
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 5,
+						"w": 119,
+						"h": 225
+					},
+					"frame": {
+						"x": 1211,
+						"y": 228,
+						"w": 119,
+						"h": 225
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c8e7ab28daee9837a0d67650f37e5e19:a4045670736c646d05a39d90dcedbdfa:602544af4fa181c5b6cb1eeffaf50c5c$"
+	}
+}
