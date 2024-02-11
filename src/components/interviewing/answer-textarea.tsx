@@ -1,4 +1,8 @@
 import { VsDiscard, VsSend } from "solid-icons/vs";
+import { JSX } from "solid-js";
+import { produce } from "solid-js/store";
+import { aiService } from "../../services/open-ai";
+import { setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
@@ -7,9 +11,34 @@ type AnswerTextareaProps = {
 };
 
 export const AnswerTextarea = ({ handleCancel }: AnswerTextareaProps) => {
+  const handleSubmit: JSX.EventHandlerUnion<
+    HTMLFormElement,
+    Event & {
+      submitter: HTMLElement;
+    }
+  > = async (event) => {
+    event.preventDefault();
+    const message = (event.target as any).elements.namedItem("answer").value;
+    setMessages(
+      produce((prev) => prev.push({ role: "user", content: message }))
+    );
+    await aiService.chat();
+    handleCancel();
+  };
+
   return (
-    <div class="flex flex-col md:flex-row w-3/4 gap-2 items-end">
-      <Textarea class="resize-none" placeholder="Enter your message here." />
+    <form
+      id="answer-textarea"
+      class="flex flex-col md:flex-row w-full gap-2 items-end"
+      onsubmit={handleSubmit}
+    >
+      <Textarea
+        name="answer"
+        class="resize-none"
+        placeholder="Enter your message here."
+        maxLength="256"
+        required
+      />
       <div class="flex flex-col gap-2">
         <Button
           class="flex-shrink-0"
@@ -19,10 +48,15 @@ export const AnswerTextarea = ({ handleCancel }: AnswerTextareaProps) => {
         >
           <VsDiscard />
         </Button>
-        <Button class="flex-shrink-0" size="sm">
+        <Button
+          class="flex-shrink-0"
+          size="sm"
+          type="submit"
+          form="answer-textarea"
+        >
           <VsSend />
         </Button>
       </div>
-    </div>
+    </form>
   );
 };

@@ -1,4 +1,5 @@
 import OpenAI from "openai";
+import { produce } from "solid-js/store";
 import {
   Message,
   messages,
@@ -27,7 +28,7 @@ class AIService {
     });
     const message = res.choices[0]?.message as Message;
     if (!message) throw new Error("No message returned from OpenAI");
-    setMessages((prev) => [...prev, message]);
+    setMessages(produce((prev) => prev.push(message)));
     setAILoading(false);
   }
 }

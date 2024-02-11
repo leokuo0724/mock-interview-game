@@ -15,10 +15,11 @@ export const Message = ({ role, content }: MessageType) => {
       )}
     >
       <div
-        class={clsx(
-          "w-2/6 max-h-32 overflow-y-auto no-scrollbar border border-slate-800 p-2 break-words",
-          role === "user" ? "text-right" : "text-left"
-        )}
+        // class={clsx(
+        //   "w-2/6 max-h-32 overflow-y-auto no-scrollbar border border-slate-800 p-2 break-words",
+        //   role === "user" ? "text-right" : "text-left"
+        // )}
+        class="w-2/6 max-h-32 overflow-y-auto no-scrollbar border border-slate-800 p-2 break-words"
       >
         <p class="text-sm">{content}</p>
       </div>

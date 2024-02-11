@@ -1,5 +1,6 @@
 import { As } from "@kobalte/core";
 import { JSX, Show, createSignal } from "solid-js";
+import { produce } from "solid-js/store";
 import { Motion, Presence } from "solid-motionone";
 import { GameState, setGameState } from "../../states/game-state";
 import { setInterviewConfig } from "../../states/interview-config";
@@ -65,12 +66,14 @@ const PreSettingsForm = () => {
       level: level(),
       extraInfo,
     });
-    setMessages([
-      {
-        role: "system",
-        content: `Your are a tech lead from a company(${extraInfo}). And user is a ${level()} ${position()} candidate. Start with greeting and then ask a question to interview the user. (Without response with character role)`,
-      },
-    ]);
+    setMessages(
+      produce((prev) =>
+        prev.push({
+          role: "system",
+          content: `Your are a tech lead from a ${extraInfo} company. And user is a ${level()} ${position()} candidate. Start with greeting and then ask a question to interview the user.`,
+        })
+      )
+    );
     setShowForm(false);
     setGameState(GameState.GAME_TRANSITION);
   };
