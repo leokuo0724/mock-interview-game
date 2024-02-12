@@ -36,7 +36,7 @@ export const AnswerTextarea = ({ handleCancel }: AnswerTextareaProps) => {
         name="answer"
         class="resize-none"
         placeholder="Enter your message here."
-        maxLength="256"
+        maxLength="512"
         required
       />
       <div class="flex flex-col gap-2">

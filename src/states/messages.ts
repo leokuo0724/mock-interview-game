@@ -6,6 +6,13 @@ export type Message = {
   content: string;
 };
 
+export type InterviewState =
+  | "idle"
+  | "ai-responding"
+  | "user-responding"
+  | "finished";
+
 export const [messages, setMessages] = createStore<Message[]>([]);
 
-export const [isAILoading, setAILoading] = createSignal(false);
+export const [interviewState, setInterviewState] =
+  createSignal<InterviewState>("idle");

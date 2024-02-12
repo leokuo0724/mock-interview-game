@@ -2,6 +2,7 @@ import { As } from "@kobalte/core";
 import { JSX, Show, createSignal } from "solid-js";
 import { produce } from "solid-js/store";
 import { Motion, Presence } from "solid-motionone";
+import { endMark } from "../../services/open-ai";
 import { GameState, setGameState } from "../../states/game-state";
 import { setInterviewConfig } from "../../states/interview-config";
 import { setMessages } from "../../states/messages";
@@ -70,7 +71,7 @@ const PreSettingsForm = () => {
       produce((prev) =>
         prev.push({
           role: "system",
-          content: `Your are a tech lead from a ${extraInfo} company. And user is a ${level()} ${position()} candidate. Start with greeting and then ask a question to interview the user.`,
+          content: `Your are a CTO from a ${extraInfo} company. And user is a ${level()} ${position()} candidate. Start with greeting and then ask a question to interview the user. Do not make message end with ${endMark} until user answered 3 questions. After that, you can end the conversation by sending a message ends with ${endMark}.`,
         })
       )
     );
