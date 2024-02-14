@@ -1,8 +1,10 @@
+import { createEffect } from "solid-js";
 import { Desk } from "../classes/desk";
 import { IntervieweeSit } from "../classes/interviewee-sit";
 import { InterviewerSit } from "../classes/interviewer-sit";
 import { SCENE_KEYS } from "../constants/phaser";
 import { GameState, setGameState } from "../states/game-state";
+import { messages } from "../states/messages";
 import { CustomScene } from "./custom-scene";
 
 export class GameScene extends CustomScene {
@@ -18,18 +20,19 @@ export class GameScene extends CustomScene {
   create() {
     this.cameras.main.setZoom(0.8);
 
+    const characterY = this.cameras.main.height / 2 + 120;
     const intervieweeX = this.cameras.main.width / 2 - 120;
     this.intervieweeSit = new IntervieweeSit(this).setAlpha(0);
     this.intervieweeSit.setPosition(
       this.cameras.main.width / 2 - 240,
-      this.cameras.main.height / 2
+      characterY
     );
 
     const interviewerX = this.cameras.main.width / 2 + 120;
     this.interviewerSit = new InterviewerSit(this).setAlpha(0);
     this.interviewerSit.setPosition(
       this.cameras.main.width / 2 + 240,
-      this.cameras.main.height / 2
+      characterY
     );
 
     this.ground = this.add.image(0, 0, "ground").setOrigin(0.5, 0).setScale(0);
@@ -72,6 +75,15 @@ export class GameScene extends CustomScene {
           },
         });
       },
+    });
+
+    createEffect(() => {
+      if (messages.at(-1)?.role === "assistant") {
+        this.interviewerSit.talk();
+      }
+      if (messages.at(-1)?.role === "user") {
+        this.intervieweeSit.talk();
+      }
     });
   }
 }

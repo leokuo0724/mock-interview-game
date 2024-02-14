@@ -17,12 +17,18 @@ export class IntervieweeSit extends CustomSprite {
     this.anims.create({
       key: "talk",
       frames: this._generateFramesFromAtlas("interviewee-sit-talk_", 0, 11),
-      repeat: -1,
+      repeat: 1,
       frameRate: 10,
       yoyo: true,
       repeatDelay: 300,
     });
 
     this.anims.play("idle");
+  }
+
+  talk() {
+    this.anims.play("talk").once("animationcomplete", () => {
+      this.anims.play("idle");
+    });
   }
 }

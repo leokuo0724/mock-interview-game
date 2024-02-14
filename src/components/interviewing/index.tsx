@@ -13,8 +13,8 @@ export const Interviewing = () => {
   });
 
   return (
-    <div class="flex w-full h-2/5 max-h-[40%]">
-      <div class="w-full overflow-y-auto no-scrollbar flex flex-col-reverse gap-2 snap-y">
+    <div class="flex w-full h-1/2 max-h-[50%]">
+      <div class="w-full overflow-y-auto no-scrollbar flex flex-col-reverse gap-2 snap-y pt-6">
         {interviewState() === "ai-responding" && (
           <Motion.div
             initial={{ opacity: 0 }}
