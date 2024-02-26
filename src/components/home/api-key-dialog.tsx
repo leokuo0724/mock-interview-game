@@ -26,8 +26,8 @@ export const APIKeyDialog: Component = (props) => {
         <DialogHeader class="text-left gap-2">
           <DialogTitle>Setup OpenAI API Key</DialogTitle>
           <DialogDescription class="flex flex-col gap-2">
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            The API key is only used for generating your response in this game.
+            We won't store it anywhere.
           </DialogDescription>
         </DialogHeader>
         <form
