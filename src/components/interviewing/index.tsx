@@ -1,4 +1,4 @@
-import { For, createEffect, createSignal } from "solid-js";
+import { For, createSignal, onMount } from "solid-js";
 import { produce } from "solid-js/store";
 import { Motion } from "solid-motionone";
 import {
@@ -8,7 +8,7 @@ import {
 import { interviewState, messages, setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
 import { AnswerTextarea } from "./answer-textarea";
-import { Message } from "./message";
+import { MessageWrapper } from "./message-wrapper";
 
 export const Interviewing = () => {
   const [isUserTyping, setIsUserTyping] = createSignal(false);
@@ -18,7 +18,7 @@ export const Interviewing = () => {
     await aiService.chat();
   };
 
-  createEffect(() => {
+  onMount(() => {
     aiService.chat();
   });
 
@@ -72,7 +72,7 @@ export const Interviewing = () => {
         )}
 
         <For each={messages.toReversed()}>
-          {(m) => <Message role={m.role} content={m.content} />}
+          {(m) => <MessageWrapper role={m.role} content={m.content} />}
         </For>
       </div>
     </div>

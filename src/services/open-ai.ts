@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 import { produce } from "solid-js/store";
 import {
-  Message,
+  OpenAIMessage,
+  ParsedAIContent,
   messages,
   setInterviewState,
   setMessages,
@@ -17,7 +18,7 @@ class AIService {
     });
   }
 
-  private createGPT3Completion(messages: Message[]) {
+  private createGPT3Completion(messages: OpenAIMessage[]) {
     if (!this.openai) throw new Error("OpenAI not initialized");
     return this.openai.chat.completions.create({
       messages,
@@ -29,20 +30,29 @@ class AIService {
   public async chat() {
     setInterviewState("ai-responding");
     const res = await this.createGPT3Completion(messages);
-    const message = res.choices[0]?.message as Message;
+    const message = res.choices[0]?.message as OpenAIMessage;
     if (!message) throw new Error("No message returned from OpenAI");
 
     setMessages(produce((prev) => prev.push(message)));
-    setInterviewState(
-      message.content.endsWith(END_MARK) ? "finished" : "user-responding"
-    );
+    const parsed = JSON.parse(message.content) as ParsedAIContent;
+    switch (parsed.type) {
+      case "ongoing":
+        setInterviewState("user-responding");
+        break;
+      case "finished":
+        setInterviewState("finished");
+        break;
+      case "report":
+        setInterviewState("summarized");
+        break;
+      default:
+        break;
+    }
   }
 
   // TODO: function that simply get response but not set message
 }
 export const aiService = new AIService();
-
-export const END_MARK = "#finish#";
 
 export const generateAIStartingSystemMessage = ({
   companyDetails,
@@ -52,16 +62,16 @@ export const generateAIStartingSystemMessage = ({
   companyDetails: string;
   jobLevel: string;
   jobPosition: string;
-}): Message => {
+}): OpenAIMessage => {
   return {
     role: "system",
-    content: `Your are a CTO from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and then ask a question to interview the user. Do not make message end with ${END_MARK} until user answered 2 questions. After that, you can end the conversation by sending a message ends with ${END_MARK}.`,
+    content: `Your are a CTO from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and then ask questions to interview the user. Response whole message by json format. There are two props -- body and type. Body is the message you sent to the user, and type is "ongoing" or "finished". Do not make message with type "finished" until user answered 2 questions. After that, you can end the conversation by sending a message with type "finished".`,
   };
 };
 
-export const generateAIEndingSystemMessage = (): Message => {
+export const generateAIEndingSystemMessage = (): OpenAIMessage => {
   return {
     role: "system",
-    content: `The interview has been finished. Generate a feedback message based on interviewee's answer and job position. The message format constructed by three parts: #result# which Y(pass) or N(no pass), #rating# which from A+ to F-, #feedback# which is a sentence to describe the interviewee's performance, and #suggestion# which is a sentence to give some advice to the interviewee.`,
+    content: `The interview has been finished. Sent a message with "report" type. Besides type and body props in json, add new prop call metadata which contains result, rating and suggestion. Based on interviewee's performance and job position. Result is Y or N, indicates user is pass or not. Rating is from A+ to F-. Suggestion is a sentence to give some advice to the interviewee.`,
   };
 };

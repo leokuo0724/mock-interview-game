@@ -2,7 +2,7 @@ import { VsDiscard, VsSend } from "solid-icons/vs";
 import { JSX } from "solid-js";
 import { produce } from "solid-js/store";
 import { aiService } from "../../services/open-ai";
-import { setMessages } from "../../states/messages";
+import { ParsedAIContent, setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
 
@@ -18,9 +18,11 @@ export const AnswerTextarea = ({ handleCancel }: AnswerTextareaProps) => {
     }
   > = async (event) => {
     event.preventDefault();
-    const message = (event.target as any).elements.namedItem("answer").value;
+    const answer = (event.target as any).elements.namedItem("answer").value;
     setMessages(
-      produce((prev) => prev.push({ role: "user", content: message }))
+      produce((prev) =>
+        prev.push({ role: "user", content: stringifyUserContent(answer) })
+      )
     );
     await aiService.chat();
     handleCancel();
@@ -59,4 +61,12 @@ export const AnswerTextarea = ({ handleCancel }: AnswerTextareaProps) => {
       </div>
     </form>
   );
+};
+
+const stringifyUserContent = (body: string) => {
+  const data: ParsedAIContent = {
+    type: "ongoing",
+    body,
+  };
+  return JSON.stringify(data);
 };
