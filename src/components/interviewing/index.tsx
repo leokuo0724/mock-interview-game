@@ -1,13 +1,23 @@
 import { For, createEffect, createSignal } from "solid-js";
+import { produce } from "solid-js/store";
 import { Motion } from "solid-motionone";
-import { aiService } from "../../services/open-ai";
-import { interviewState, messages } from "../../states/messages";
+import {
+  aiService,
+  generateAIEndingSystemMessage,
+} from "../../services/open-ai";
+import { interviewState, messages, setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
 import { AnswerTextarea } from "./answer-textarea";
 import { Message } from "./message";
 
 export const Interviewing = () => {
   const [isUserTyping, setIsUserTyping] = createSignal(false);
+
+  const handleSummarizeClick = async () => {
+    setMessages(produce((prev) => prev.push(generateAIEndingSystemMessage())));
+    await aiService.chat();
+  };
+
   createEffect(() => {
     aiService.chat();
   });
@@ -46,6 +56,18 @@ export const Interviewing = () => {
                 </Button>
               )}
             </div>
+          </Motion.div>
+        )}
+        {interviewState() === "finished" && (
+          <Motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            class="flex w-full snap-end justify-center"
+          >
+            <Button size="sm" onclick={handleSummarizeClick}>
+              Summarize
+            </Button>
           </Motion.div>
         )}
 
