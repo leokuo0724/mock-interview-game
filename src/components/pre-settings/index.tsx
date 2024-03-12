@@ -1,12 +1,21 @@
 import { As } from "@kobalte/core";
-import { JSX, Show, createSignal } from "solid-js";
+import { JSX, Show, createMemo, createSignal } from "solid-js";
 import { produce } from "solid-js/store";
 import { Motion, Presence } from "solid-motionone";
 import { generateAIStartingSystemMessage } from "../../services/open-ai";
 import { GameState, setGameState } from "../../states/game-state";
-import { setInterviewConfig } from "../../states/interview-config";
+import {
+  currentInterviewRound,
+  setInterviewConfig,
+} from "../../states/interview-config";
 import { setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import {
@@ -50,6 +59,20 @@ const PreSettingsForm = () => {
   const [position, setPosition] = createSignal("");
   const [level, setLevel] = createSignal("");
 
+  const [isHRChecked, setHRChecked] = createSignal(false);
+  const [isCTOChecked, setCTOChecked] = createSignal(false);
+  const [isCEOChecked, setCEOChecked] = createSignal(false);
+
+  const checkedSections = createMemo(() => {
+    return [
+      isHRChecked() ? "HR" : "",
+      isCTOChecked() ? "Tech Lead / CTO" : "",
+      isCEOChecked() ? "CEO" : "",
+    ].filter(Boolean);
+  });
+
+  const checkedSectionsText = createMemo(() => checkedSections().join(", "));
+
   const handleSubmit: JSX.EventHandlerUnion<
     HTMLFormElement,
     Event & {
@@ -60,7 +83,7 @@ const PreSettingsForm = () => {
     const elements = (event.target as any).elements;
     const name = elements.namedItem("name").value;
     const extraInfo = elements.namedItem("extra-info").value;
-    if (!name || !position() || !level()) {
+    if (!name || !position() || !level() || checkedSections().length === 0) {
       showToast({
         title: "Uh oh! Something's missing.",
         description: "Please fill in all the required fields.",
@@ -73,6 +96,7 @@ const PreSettingsForm = () => {
       gender: gender(),
       position: position(),
       level: level(),
+      rounds: checkedSections(),
       extraInfo,
     });
     setMessages(
@@ -82,6 +106,7 @@ const PreSettingsForm = () => {
             companyDetails: extraInfo,
             jobLevel: level(),
             jobPosition: position(),
+            interviewerPosition: checkedSections()[currentInterviewRound()],
           })
         )
       )
@@ -185,6 +210,39 @@ const PreSettingsForm = () => {
             </SelectTrigger>
             <SelectContent />
           </Select>
+        </div>
+        <div class="flex flex-col gap-2 col-span-1 md:col-span-2">
+          <Label for="interview-type">
+            Who you should interview with? <span class="text-red-900">*</span>
+          </Label>
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <div class="ring-offset-background text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border bg-transparent px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
+                {checkedSectionsText() ||
+                  "Select which sections should included"}
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent class="w-[180px] md:w-[376px]">
+              <DropdownMenuCheckboxItem
+                checked={isHRChecked()}
+                onChange={setHRChecked}
+              >
+                HR
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={isCTOChecked()}
+                onChange={setCTOChecked}
+              >
+                Tech Lead / CTO
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={isCEOChecked()}
+                onChange={setCEOChecked}
+              >
+                CEO
+              </DropdownMenuCheckboxItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div class="flex flex-col gap-2 col-span-1 md:col-span-2">
           <Label for="extra-info">What kind of company?</Label>
