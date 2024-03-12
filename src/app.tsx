@@ -2,6 +2,7 @@ import { createEffect, type Component } from "solid-js";
 import { Home } from "./components/home";
 import { Interviewing } from "./components/interviewing";
 import { PreSettings } from "./components/pre-settings";
+import { Toaster } from "./components/ui/toaster";
 import { GameState, gameState } from "./states/game-state";
 import { resizeCounter } from "./states/screen";
 
@@ -28,6 +29,7 @@ export const App: Component = () => {
       {(gameState() === GameState.PRE_SETTINGS ||
         gameState() === GameState.GAME_TRANSITION) && <PreSettings />}
       {gameState() === GameState.INTERVIEWING && <Interviewing />}
+      <Toaster />
     </div>
   );
 };

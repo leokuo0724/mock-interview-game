@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
+import { showToast } from "../ui/toaster";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const [isShowForm, setShowForm] = createSignal(true);
@@ -46,8 +47,8 @@ export const PreSettings = () => {
 
 const PreSettingsForm = () => {
   const [gender, setGender] = createSignal("Male");
-  const [position, setPosition] = createSignal("Frontend Engineer");
-  const [level, setLevel] = createSignal("Junior");
+  const [position, setPosition] = createSignal("");
+  const [level, setLevel] = createSignal("");
 
   const handleSubmit: JSX.EventHandlerUnion<
     HTMLFormElement,
@@ -59,6 +60,13 @@ const PreSettingsForm = () => {
     const elements = (event.target as any).elements;
     const name = elements.namedItem("name").value;
     const extraInfo = elements.namedItem("extra-info").value;
+    if (!name || !position() || !level()) {
+      showToast({
+        title: "Uh oh! Something's missing.",
+        description: "Please fill in all the required fields.",
+      });
+      return;
+    }
 
     setInterviewConfig({
       name,
@@ -98,7 +106,7 @@ const PreSettingsForm = () => {
           <Label for="name">
             Your Name <span class="text-red-900">*</span>
           </Label>
-          <Input name="name" placeholder="Your name" maxLength={20} required />
+          <Input name="name" placeholder="Your name" maxLength={20} />
         </div>
         <div class="flex flex-col gap-2">
           <Label for="gender">
@@ -112,7 +120,6 @@ const PreSettingsForm = () => {
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
             )}
-            required
             disabled
           >
             {/* TODO: temp set disabled */}
@@ -139,6 +146,7 @@ const PreSettingsForm = () => {
             name="position"
             value={position()}
             onChange={setPosition}
+            placeholder="Select a position"
             options={[
               "Frontend Engineer",
               "Backend Engineer",
@@ -147,7 +155,6 @@ const PreSettingsForm = () => {
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
             )}
-            required
           >
             <SelectTrigger>
               <SelectValue<string>>
@@ -165,11 +172,11 @@ const PreSettingsForm = () => {
             name="level"
             value={level()}
             onChange={setLevel}
+            placeholder="Select a level"
             options={["Junior", "Mid", "Senior", "Staff", "Principal"]}
             itemComponent={(props) => (
               <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>
             )}
-            required
           >
             <SelectTrigger>
               <SelectValue<string>>
