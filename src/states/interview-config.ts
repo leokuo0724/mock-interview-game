@@ -44,8 +44,8 @@ type InterviewRating =
   | "D-";
 export type InterviewReport = {
   interviewerPosition: string;
-  isPassed: boolean;
-  rating: InterviewRating;
+  isPassed: boolean | null;
+  rating: InterviewRating | null;
   summary: string;
   suggestion: string;
 };
@@ -54,12 +54,19 @@ export const [interviewReports, setInterviewReports] = createStore<
   InterviewReport[]
 >([
   {
-    interviewerPosition: "CTO",
+    interviewerPosition: "HR",
     isPassed: true,
     rating: "A",
     summary:
       "The interviewee shows the understanding of the company's vision and mission. He also has a good understanding of the technology stack that we are using.",
     suggestion:
       "Keep the momentum and continue to learn and grow. We are looking forward to seeing you in the next round.",
+  },
+  {
+    interviewerPosition: "Tech Lead / CTO",
+    isPassed: null,
+    rating: null,
+    summary: "",
+    suggestion: "",
   },
 ]);
