@@ -74,6 +74,6 @@ export const generateAIStartingSystemMessage = ({
 export const generateAIEndingSystemMessage = (): OpenAIMessage => {
   return {
     role: "system",
-    content: `The interview has been finished. Sent a message with "report" type. Body is brief of the whole interview. Besides type and body props in json, add new prop call metadata which contains result and rating. Based on interviewee's performance and job position. Result is Y or N, indicates user is pass or not. Rating is from A+ to F-. Suggestion is a sentence to give some advice to the interviewee.`,
+    content: `The interview has been finished. Sent a message with "report" type. Body is brief of the whole interview. Besides type and body props in json, add new prop call metadata which contains result and rating. Based on interviewee's performance and job position. Result is Y or N, indicates user is pass or not. Rating is from A+ to D-. Suggestion is a sentence to give some advice to the interviewee.`,
   };
 };

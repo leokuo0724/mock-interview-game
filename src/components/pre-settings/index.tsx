@@ -118,7 +118,7 @@ const PreSettingsForm = () => {
   return (
     <>
       <div class="flex flex-col">
-        <h2 class="text-3xl font-bold tracking-tight">Interview Settings </h2>
+        <h2 class="text-3xl font-bold tracking-tight">Interview Settings</h2>
         <p class="text-muted-foreground">Setup your mock interview settings</p>
       </div>
 
