@@ -29,7 +29,7 @@ export const [interviewConfig, setInterviewConfig] =
 export const [currentInterviewRound, setCurrentInterviewRound] =
   createSignal(0);
 
-type InterviewRating =
+export type InterviewRating =
   | "A+"
   | "A"
   | "A-"
