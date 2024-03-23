@@ -18,7 +18,11 @@ import {
   setInterviewState,
   setMessages,
 } from "~/states/messages";
-import { setShowPreSettingsForm } from "~/states/ui";
+import {
+  isShowReport,
+  setShowPreSettingsForm,
+  setShowReport,
+} from "~/states/ui";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
@@ -72,11 +76,15 @@ export const ReportDialog: Component = (props) => {
       });
       setInterviewReports([]);
       setShowPreSettingsForm(true);
+      setShowReport(true);
     });
   };
 
   return (
-    <Dialog open={interviewState() === "summarized"}>
+    <Dialog
+      open={interviewState() === "summarized" && isShowReport()}
+      onOpenChange={setShowReport}
+    >
       <DialogContent class="px-0">
         <DialogHeader class="px-6 ">
           <DialogTitle>Interview Result</DialogTitle>
@@ -117,7 +125,7 @@ export const ReportDialog: Component = (props) => {
           </Card>
         </div>
 
-        <div class="px-6 mb-4">
+        <div class="px-6 mb-4 max-h-[40vh] overflow-auto">
           <Timeline
             items={interviewReports.map((report, index) => ({
               title: `Round ${index + 1}: ${report.interviewerPosition}`,

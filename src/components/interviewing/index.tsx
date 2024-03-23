@@ -1,6 +1,7 @@
 import { For, createSignal, onMount } from "solid-js";
 import { produce } from "solid-js/store";
 import { Motion } from "solid-motionone";
+import { setShowReport } from "~/states/ui";
 import {
   aiService,
   generateAIEndingSystemMessage,
@@ -69,6 +70,18 @@ export const Interviewing = () => {
             >
               <Button size="sm" onclick={handleSummarizeClick}>
                 Summarize
+              </Button>
+            </Motion.div>
+          )}
+          {interviewState() === "summarized" && (
+            <Motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              class="flex w-full snap-end justify-center"
+            >
+              <Button size="sm" onclick={() => setShowReport(true)}>
+                Report
               </Button>
             </Motion.div>
           )}
