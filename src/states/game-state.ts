@@ -7,6 +7,7 @@ export enum GameState {
   PRE_SETTINGS,
   GAME_TRANSITION,
   INTERVIEWING,
+  POST_INTERVIEW,
 }
 
 export const [gameState, setGameState] = createSignal(GameState.PRELOAD);

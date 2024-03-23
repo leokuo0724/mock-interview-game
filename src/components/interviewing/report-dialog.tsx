@@ -1,11 +1,21 @@
-import { Component } from "solid-js";
+import { Component, batch } from "solid-js";
+import { SCENE_KEYS } from "~/constants/phaser";
+import PhaserGame from "~/game";
+import { generateAIStartingSystemMessage } from "~/services/open-ai";
+import { GameState, setGameState } from "~/states/game-state";
 import {
   InterviewRating,
   InterviewReport,
   currentInterviewRound,
   interviewConfig,
   interviewReports,
+  setCurrentInterviewRound,
 } from "~/states/interview-config";
+import {
+  interviewState,
+  setInterviewState,
+  setMessages,
+} from "~/states/messages";
 import { isReportDialogOpen } from "~/states/ui-states";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
@@ -21,13 +31,31 @@ import {
 import { Timeline } from "../ui/timeline";
 
 export const ReportDialog: Component = (props) => {
-  // return null;
-  // if (interviewState() !== "summarized") return null;
+  const overallRating = () => calculateOverallRating(interviewReports);
+  const handleContinue = () => {
+    batch(() => {
+      setInterviewState("idle");
+      setGameState(GameState.POST_INTERVIEW);
+      setCurrentInterviewRound((prev) => prev + 1);
+      const { extraInfo, level, position, rounds } = interviewConfig;
+      console.log(currentInterviewRound());
+      if (!level || !position || !rounds[currentInterviewRound()])
+        throw new Error("Interview config is not complete");
 
-  const overallRating = calculateOverallRating(interviewReports);
+      setMessages([
+        generateAIStartingSystemMessage({
+          companyDetails: extraInfo ?? "",
+          jobLevel: level,
+          jobPosition: position,
+          interviewerPosition: interviewConfig.rounds[currentInterviewRound()],
+        }),
+      ]);
+    });
+    PhaserGame.scene.start(SCENE_KEYS.GAME);
+  };
 
   return (
-    <Dialog open={isReportDialogOpen()}>
+    <Dialog open={interviewState() === "summarized" && isReportDialogOpen()}>
       <DialogContent class="px-0">
         <DialogHeader class="px-6 ">
           <DialogTitle>Interview Result</DialogTitle>
@@ -42,7 +70,7 @@ export const ReportDialog: Component = (props) => {
                 <CardTitle>Interviewee: {interviewConfig.name}</CardTitle>
                 <CardDescription class="pb-2">
                   <p class="sm:hidden font-bold">
-                    Overall Rating: {overallRating}
+                    Overall Rating: {overallRating()}
                   </p>
                   You have been completed {currentInterviewRound() + 1}/
                   {interviewConfig.rounds.length} rounds of the interview.
@@ -61,7 +89,7 @@ export const ReportDialog: Component = (props) => {
               </div>
               <div class="hidden basis-32 sm:flex items-center justify-center">
                 <div class="h-fit text-5xl text-muted-foreground">
-                  {overallRating}
+                  {overallRating()}
                 </div>
               </div>
             </div>
@@ -81,9 +109,9 @@ export const ReportDialog: Component = (props) => {
         <div class="px-6">
           <DialogFooter>
             {interviewConfig.rounds.length - 1 === currentInterviewRound() ? (
-              <Button>Finished</Button>
+              <Button>Finish</Button>
             ) : (
-              <Button>Continue</Button>
+              <Button onClick={handleContinue}>Continue</Button>
             )}
           </DialogFooter>
         </div>
@@ -115,9 +143,8 @@ const calculateOverallRating = (
   const ratings = reports
     .map((report) => report.rating)
     .filter((rating): rating is InterviewRating => !!rating);
-  const total = ratings.length;
   const sum = ratings.reduce((acc, cur) => acc + ratingToNumber(cur), 0);
-  const average = sum / total;
+  const average = sum / ratings.length;
 
   return numberToRating(average);
 };

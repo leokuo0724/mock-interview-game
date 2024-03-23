@@ -1,5 +1,10 @@
 import OpenAI from "openai";
+import { batch } from "solid-js";
 import { produce } from "solid-js/store";
+import {
+  currentInterviewRound,
+  setInterviewReports,
+} from "~/states/interview-config";
 import {
   OpenAIMessage,
   ParsedAIContent,
@@ -43,7 +48,25 @@ class AIService {
         setInterviewState("finished");
         break;
       case "report":
-        setInterviewState("summarized");
+        batch(() => {
+          setInterviewReports(currentInterviewRound(), "summary", parsed.body);
+          setInterviewReports(
+            currentInterviewRound(),
+            "isPassed",
+            parsed.metadata.result === "Y"
+          );
+          setInterviewReports(
+            currentInterviewRound(),
+            "rating",
+            parsed.metadata.rating
+          );
+          setInterviewReports(
+            currentInterviewRound(),
+            "suggestion",
+            parsed.metadata.suggestion
+          );
+          setInterviewState("summarized");
+        });
         break;
       default:
         break;
@@ -67,7 +90,7 @@ export const generateAIStartingSystemMessage = ({
 }): OpenAIMessage => {
   return {
     role: "system",
-    content: `Your are a ${interviewerPosition} from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and then ask 3 depth questions to interview the user gradually. Response whole message by json format. There are two props -- body and type.Body is the message you sent to the user, and type is "ongoing" or "finished". Do not make message with type "finished" if body contain any further question. Only end the interview with "finished" type of message after you are done`,
+    content: `Your are a ${interviewerPosition} from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and explain who you are and then start asking questions to interview the user (Focused point, HR: personality, CTO: technical, CEO: behavioral). Response whole message by json format. There are two props -- body and type.Body is the message you sent to the user, and type is "ongoing" or "finished". Do not mark as "finished" if there is any further question in message. After user answered 3 depth questions, send a "finished" message (should not include any question in the message)`,
   };
 };
 

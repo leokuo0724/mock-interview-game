@@ -11,19 +11,12 @@ type InterviewConfig = {
 };
 
 export const [interviewConfig, setInterviewConfig] =
-  // createStore<InterviewConfig>({
-  //   name: null,
-  //   gender: null,
-  //   position: null,
-  //   level: null,
-  //   rounds: [],
-  // });
   createStore<InterviewConfig>({
-    name: "Leo Kuo",
-    gender: "Male",
-    position: "Frontend Engineer",
-    level: "Senior",
-    rounds: ["HR", "Tech Lead / CTO"],
+    name: null,
+    gender: null,
+    position: null,
+    level: null,
+    rounds: [],
   });
 
 export const [currentInterviewRound, setCurrentInterviewRound] =
@@ -52,21 +45,4 @@ export type InterviewReport = {
 
 export const [interviewReports, setInterviewReports] = createStore<
   InterviewReport[]
->([
-  {
-    interviewerPosition: "HR",
-    isPassed: true,
-    rating: "A",
-    summary:
-      "The interviewee shows the understanding of the company's vision and mission. He also has a good understanding of the technology stack that we are using.",
-    suggestion:
-      "Keep the momentum and continue to learn and grow. We are looking forward to seeing you in the next round.",
-  },
-  {
-    interviewerPosition: "Tech Lead / CTO",
-    isPassed: null,
-    rating: null,
-    summary: "",
-    suggestion: "",
-  },
-]);
+>([]);

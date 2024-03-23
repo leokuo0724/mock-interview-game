@@ -1,5 +1,5 @@
 import { As } from "@kobalte/core";
-import { JSX, Show, createMemo, createSignal } from "solid-js";
+import { JSX, Show, batch, createMemo, createSignal } from "solid-js";
 import { produce } from "solid-js/store";
 import { Motion, Presence } from "solid-motionone";
 import { generateAIStartingSystemMessage } from "../../services/open-ai";
@@ -7,6 +7,7 @@ import { GameState, setGameState } from "../../states/game-state";
 import {
   currentInterviewRound,
   setInterviewConfig,
+  setInterviewReports,
 } from "../../states/interview-config";
 import { setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
@@ -66,7 +67,7 @@ const PreSettingsForm = () => {
   const checkedSections = createMemo(() => {
     return [
       isHRChecked() ? "HR" : "",
-      isCTOChecked() ? "Tech Lead / CTO" : "",
+      isCTOChecked() ? "CTO" : "",
       isCEOChecked() ? "CEO" : "",
     ].filter(Boolean);
   });
@@ -90,29 +91,40 @@ const PreSettingsForm = () => {
       });
       return;
     }
+    batch(() => {
+      setInterviewConfig({
+        name,
+        gender: gender(),
+        position: position(),
+        level: level(),
+        rounds: checkedSections(),
+        extraInfo,
+      });
+      setInterviewReports(
+        checkedSections().map((position) => ({
+          interviewerPosition: position,
+          isPassed: null,
+          rating: null,
+          summary: "",
+          suggestion: "",
+        }))
+      );
 
-    setInterviewConfig({
-      name,
-      gender: gender(),
-      position: position(),
-      level: level(),
-      rounds: checkedSections(),
-      extraInfo,
-    });
-    setMessages(
-      produce((prev) =>
-        prev.push(
-          generateAIStartingSystemMessage({
-            companyDetails: extraInfo,
-            jobLevel: level(),
-            jobPosition: position(),
-            interviewerPosition: checkedSections()[currentInterviewRound()],
-          })
+      setMessages(
+        produce((prev) =>
+          prev.push(
+            generateAIStartingSystemMessage({
+              companyDetails: extraInfo,
+              jobLevel: level(),
+              jobPosition: position(),
+              interviewerPosition: checkedSections()[currentInterviewRound()],
+            })
+          )
         )
-      )
-    );
-    setShowForm(false);
-    setGameState(GameState.GAME_TRANSITION);
+      );
+      setShowForm(false);
+      setGameState(GameState.GAME_TRANSITION);
+    });
   };
 
   return (
@@ -233,7 +245,7 @@ const PreSettingsForm = () => {
                 checked={isCTOChecked()}
                 onChange={setCTOChecked}
               >
-                Tech Lead / CTO
+                CTO
               </DropdownMenuCheckboxItem>
               <DropdownMenuCheckboxItem
                 checked={isCEOChecked()}
