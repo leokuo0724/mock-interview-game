@@ -2,6 +2,7 @@ import { As } from "@kobalte/core";
 import { JSX, Show, batch, createMemo, createSignal } from "solid-js";
 import { produce } from "solid-js/store";
 import { Motion, Presence } from "solid-motionone";
+import { isShowPreSettingsForm, setShowPreSettingsForm } from "~/states/ui";
 import { generateAIStartingSystemMessage } from "../../services/open-ai";
 import { GameState, setGameState } from "../../states/game-state";
 import {
@@ -29,8 +30,6 @@ import {
 import { showToast } from "../ui/toaster";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
-const [isShowForm, setShowForm] = createSignal(true);
-
 export const PreSettings = () => {
   return (
     <div class="flex h-full">
@@ -39,7 +38,7 @@ export const PreSettings = () => {
 
       {/* Content */}
       <Presence exitBeforeEnter>
-        <Show when={isShowForm()}>
+        <Show when={isShowPreSettingsForm()}>
           <Motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -122,7 +121,7 @@ const PreSettingsForm = () => {
           )
         )
       );
-      setShowForm(false);
+      setShowPreSettingsForm(false);
       setGameState(GameState.GAME_TRANSITION);
     });
   };

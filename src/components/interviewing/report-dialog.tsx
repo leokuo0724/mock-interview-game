@@ -10,13 +10,15 @@ import {
   interviewConfig,
   interviewReports,
   setCurrentInterviewRound,
+  setInterviewConfig,
+  setInterviewReports,
 } from "~/states/interview-config";
 import {
   interviewState,
   setInterviewState,
   setMessages,
 } from "~/states/messages";
-import { isReportDialogOpen } from "~/states/ui-states";
+import { setShowPreSettingsForm } from "~/states/ui";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
@@ -32,13 +34,13 @@ import { Timeline } from "../ui/timeline";
 
 export const ReportDialog: Component = (props) => {
   const overallRating = () => calculateOverallRating(interviewReports);
+
   const handleContinue = () => {
     batch(() => {
       setInterviewState("idle");
       setGameState(GameState.POST_INTERVIEW);
       setCurrentInterviewRound((prev) => prev + 1);
       const { extraInfo, level, position, rounds } = interviewConfig;
-      console.log(currentInterviewRound());
       if (!level || !position || !rounds[currentInterviewRound()])
         throw new Error("Interview config is not complete");
 
@@ -54,8 +56,27 @@ export const ReportDialog: Component = (props) => {
     PhaserGame.scene.start(SCENE_KEYS.GAME);
   };
 
+  const handleFinish = () => {
+    // reset states
+    batch(() => {
+      setInterviewState("idle");
+      setGameState(GameState.HOME);
+      setCurrentInterviewRound(0);
+      setMessages([]);
+      setInterviewConfig({
+        name: null,
+        gender: null,
+        position: null,
+        level: null,
+        rounds: [],
+      });
+      setInterviewReports([]);
+      setShowPreSettingsForm(true);
+    });
+  };
+
   return (
-    <Dialog open={interviewState() === "summarized" && isReportDialogOpen()}>
+    <Dialog open={interviewState() === "summarized"}>
       <DialogContent class="px-0">
         <DialogHeader class="px-6 ">
           <DialogTitle>Interview Result</DialogTitle>
@@ -109,7 +130,7 @@ export const ReportDialog: Component = (props) => {
         <div class="px-6">
           <DialogFooter>
             {interviewConfig.rounds.length - 1 === currentInterviewRound() ? (
-              <Button>Finish</Button>
+              <Button onClick={handleFinish}>Finish</Button>
             ) : (
               <Button onClick={handleContinue}>Continue</Button>
             )}

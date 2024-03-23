@@ -3,7 +3,7 @@ import { Desk } from "../classes/desk";
 import { IntervieweeSit } from "../classes/interviewee-sit";
 import { InterviewerSit } from "../classes/interviewer-sit";
 import { SCENE_KEYS } from "../constants/phaser";
-import { GameState, setGameState } from "../states/game-state";
+import { GameState, gameState, setGameState } from "../states/game-state";
 import { messages } from "../states/messages";
 import { CustomScene } from "./custom-scene";
 
@@ -83,6 +83,11 @@ export class GameScene extends CustomScene {
       }
       if (messages.at(-1)?.role === "user") {
         this.intervieweeSit.talk();
+      }
+    });
+    createEffect(() => {
+      if (gameState() === GameState.HOME) {
+        this.scene.start(SCENE_KEYS.HOME);
       }
     });
   }
