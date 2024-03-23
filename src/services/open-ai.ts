@@ -90,7 +90,7 @@ export const generateAIStartingSystemMessage = ({
 }): OpenAIMessage => {
   return {
     role: "system",
-    content: `Your are a ${interviewerPosition} from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and explain who you are and then start asking questions to interview the user (Focused point, HR: personality, CTO: technical, CEO: behavioral). Response whole message by json format. There are two props -- body and type.Body is the message you sent to the user, and type is "ongoing" or "finished". Do not mark as "finished" if there is any further question in message. After user answered 3 depth questions, send a "finished" message (should not include any question in the message)`,
+    content: `Your are a ${interviewerPosition} from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and explain who you are and then start asking questions to interview the user (HR ask about personality, CTO ask about technical, CEO ask about behavioral). Response whole message by json format. There are two props -- body and type.Body is the message you sent to the user, and type is "ongoing" or "finished". Do not mark as "finished" if there is any question in the message to candidate. After user answered questions and you have no question, then send a "finished" message (do not ask question in "finished" message)`,
   };
 };
 
