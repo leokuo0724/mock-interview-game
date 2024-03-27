@@ -21,3 +21,28 @@ export const [interviewConfig, setInterviewConfig] =
 
 export const [currentInterviewRound, setCurrentInterviewRound] =
   createSignal(0);
+
+export type InterviewRating =
+  | "A+"
+  | "A"
+  | "A-"
+  | "B+"
+  | "B"
+  | "B-"
+  | "C+"
+  | "C"
+  | "C-"
+  | "D+"
+  | "D"
+  | "D-";
+export type InterviewReport = {
+  interviewerPosition: string;
+  isPassed: boolean | null;
+  rating: InterviewRating | null;
+  summary: string;
+  suggestion: string;
+};
+
+export const [interviewReports, setInterviewReports] = createStore<
+  InterviewReport[]
+>([]);

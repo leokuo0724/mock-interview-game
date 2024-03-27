@@ -9,7 +9,7 @@ export type OpenAIMessage = {
 export type ParsedAIContent = {
   body: string;
   type: "ongoing" | "finished" | "report";
-  metadata?: any; // FIXME
+  metadata?: any;
 };
 
 export type InterviewState =

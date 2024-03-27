@@ -1,5 +1,10 @@
 import OpenAI from "openai";
+import { batch } from "solid-js";
 import { produce } from "solid-js/store";
+import {
+  currentInterviewRound,
+  setInterviewReports,
+} from "~/states/interview-config";
 import {
   OpenAIMessage,
   ParsedAIContent,
@@ -43,7 +48,25 @@ class AIService {
         setInterviewState("finished");
         break;
       case "report":
-        setInterviewState("summarized");
+        batch(() => {
+          setInterviewReports(currentInterviewRound(), "summary", parsed.body);
+          setInterviewReports(
+            currentInterviewRound(),
+            "isPassed",
+            parsed.metadata.result === "Y"
+          );
+          setInterviewReports(
+            currentInterviewRound(),
+            "rating",
+            parsed.metadata.rating
+          );
+          setInterviewReports(
+            currentInterviewRound(),
+            "suggestion",
+            parsed.metadata.suggestion
+          );
+          setInterviewState("summarized");
+        });
         break;
       default:
         break;
@@ -67,13 +90,13 @@ export const generateAIStartingSystemMessage = ({
 }): OpenAIMessage => {
   return {
     role: "system",
-    content: `Your are a ${interviewerPosition} from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and then ask 3 depth questions to interview the user gradually. Response whole message by json format. There are two props -- body and type.Body is the message you sent to the user, and type is "ongoing" or "finished". Do not make message with type "finished" if body contain any further question. Only end the interview with "finished" type of message after you are done`,
+    content: `Your are a ${interviewerPosition} from a ${companyDetails} company. User is a ${jobLevel} ${jobPosition} candidate. Start with greeting and explain who you are and then start asking questions to interview the user (HR ask about personality, CTO ask about technical, CEO ask about behavioral). Response whole message by json format. There are two props -- body and type.Body is the message you sent to the user, and type is "ongoing" or "finished". Do not mark as "finished" if there is any question in the message to candidate. After user answered questions and you have no question, then send a "finished" message (do not ask question in "finished" message)`,
   };
 };
 
 export const generateAIEndingSystemMessage = (): OpenAIMessage => {
   return {
     role: "system",
-    content: `The interview has been finished. Sent a message with "report" type. Body is brief of the whole interview. Besides type and body props in json, add new prop call metadata which contains result and rating. Based on interviewee's performance and job position. Result is Y or N, indicates user is pass or not. Rating is from A+ to F-. Suggestion is a sentence to give some advice to the interviewee.`,
+    content: `The interview has been finished. Sent a message with "report" type. Body is brief of the whole interview. Besides type and body props in json, add new prop call metadata which contains result and rating. Based on interviewee's performance and job position. Result is Y or N, indicates user is pass or not. Rating is from A+ to D-. Suggestion is a sentence to give some advice to the interviewee.`,
   };
 };
