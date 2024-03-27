@@ -23,7 +23,7 @@ export const Interviewing = () => {
     } catch {
       showToast({
         title: "Uh oh! Something's wrong.",
-        description: "Please check about your openAI key.",
+        description: "Please check about your openAI key and restart.",
       });
     }
   };
@@ -35,7 +35,7 @@ export const Interviewing = () => {
       } catch {
         showToast({
           title: "Uh oh! Something's wrong.",
-          description: "Please check about your openAI key.",
+          description: "Please check about your openAI key and restart.",
         });
       }
     })();
