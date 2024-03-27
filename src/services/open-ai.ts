@@ -72,8 +72,6 @@ class AIService {
         break;
     }
   }
-
-  // TODO: function that simply get response but not set message
 }
 export const aiService = new AIService();
 

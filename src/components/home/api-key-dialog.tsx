@@ -37,9 +37,11 @@ export const APIKeyDialog: Component = (props) => {
             const apiKeyValue = (event.target as any).elements.namedItem(
               "api-key"
             ).value;
-            // TODO: init openai service
+
             if (import.meta.env.DEV) {
               aiService.init(import.meta.env.VITE_OPENAI_API_KEY);
+            } else {
+              aiService.init(apiKeyValue);
             }
 
             setOpen(false);
@@ -50,6 +52,7 @@ export const APIKeyDialog: Component = (props) => {
             name="api-key"
             placeholder="Enter API Key Here."
             class="flex-1"
+            required
           />
         </form>
         <DialogFooter>

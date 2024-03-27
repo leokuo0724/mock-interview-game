@@ -8,6 +8,7 @@ import {
 } from "../../services/open-ai";
 import { interviewState, messages, setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
+import { showToast } from "../ui/toaster";
 import { AnswerTextarea } from "./answer-textarea";
 import { MessageWrapper } from "./message-wrapper";
 import { ReportDialog } from "./report-dialog";
@@ -17,11 +18,27 @@ export const Interviewing = () => {
 
   const handleSummarizeClick = async () => {
     setMessages(produce((prev) => prev.push(generateAIEndingSystemMessage())));
-    await aiService.chat();
+    try {
+      await aiService.chat();
+    } catch {
+      showToast({
+        title: "Uh oh! Something's wrong.",
+        description: "Please check about your openAI key.",
+      });
+    }
   };
 
   onMount(() => {
-    aiService.chat();
+    (async function () {
+      try {
+        await aiService.chat();
+      } catch {
+        showToast({
+          title: "Uh oh! Something's wrong.",
+          description: "Please check about your openAI key.",
+        });
+      }
+    })();
   });
 
   return (

@@ -5,6 +5,7 @@ import { aiService } from "../../services/open-ai";
 import { ParsedAIContent, setMessages } from "../../states/messages";
 import { Button } from "../ui/button";
 import { Textarea } from "../ui/textarea";
+import { showToast } from "../ui/toaster";
 
 type AnswerTextareaProps = {
   handleCancel: () => void;
@@ -24,7 +25,14 @@ export const AnswerTextarea = ({ handleCancel }: AnswerTextareaProps) => {
         prev.push({ role: "user", content: stringifyUserContent(answer) })
       )
     );
-    await aiService.chat();
+    try {
+      await aiService.chat();
+    } catch (error) {
+      showToast({
+        title: "Uh oh! Something's wrong.",
+        description: "Please check about your openAI key.",
+      });
+    }
     handleCancel();
   };
 
