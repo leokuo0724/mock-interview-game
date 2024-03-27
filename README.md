@@ -1,12 +1,16 @@
 # Mock Interview Game
 
-![Cover](/src/assets/cover.png)
+[![Cover](/src/assets/cover.png)](https://mock-interview-game.netlify.app/)
 
 ![SolidJS](https://img.shields.io/badge/solidjS-1.8.11-blue?style=for-the-badge)
 ![Phaser](https://img.shields.io/badge/phaser-3.70.0-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
 This is a fun and interactive mock interview game built using the [SolidJS](https://www.solidjs.com/) framework and [Phaser](https://phaser.io/) game engine. User can play through a series of interview questions while enjoying a game experience.
+
+## Demo
+
+A live demo of the Mock Interview Game can be found [here](https://mock-interview-game.netlify.app/).
 
 ## Getting Started for developers
 
