@@ -1,38 +1,62 @@
-## Description
+# Mock Interview Game
 
-The project is a simple template of using Phaser with SolidJS. The concept is using signal for state management.
+![Cover](/src/assets/cover.png)
 
-## Usage
+![SolidJS](https://img.shields.io/badge/solidjS-1.8.11-blue?style=for-the-badge)
+![Phaser](https://img.shields.io/badge/phaser-3.70.0-blue?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This is a fun and interactive mock interview game built using the [SolidJS](https://www.solidjs.com/) framework and [Phaser](https://phaser.io/) game engine. User can play through a series of interview questions while enjoying a game experience.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## Getting Started for developers
+
+To get started with this project, follow these steps:
+
+1. Clone the repository to your local machine:
 
 ```bash
-$ npm install # or pnpm install or yarn install
+git clone https://github.com/leokuo0724/mock-interview-game.git
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+2. Navigate to the project directory:
 
-## Available Scripts
+```bash
+cd mock-interview-game
+```
 
-In the project directory, you can run:
+3. Install dependencies using pnpm:
 
-### `npm run dev` or `npm start`
+```bash
+pnpm install
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+4. Start the development server:
 
-The page will reload if you make edits.<br>
+```bash
+pnpm dev
+```
 
-### `npm run build`
+## Configuration
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+In dev mode, it will read OpenAI's key in environment variable by default. You should add your OpenAI API key by following steps:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Get your OpenAI API key from the [OpenAI website](https://openai.com/)
+2. Create a `.env` file in the root directory of the project.
+3. Add your OpenAI API key to the `.env` file:
 
-## Deployment
+```env
+VITE_OPENAI_API_KEY=your-api-key-here
+```
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+4. Save the `.env` file.
+5. Restart the development server
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE.md) file for details.
+
+## Acknowledgments
+
+- SolidJS: https://solidjs.com/
+- Phaser: https://phaser.io/
+- OpenAI: https://openai.com/
